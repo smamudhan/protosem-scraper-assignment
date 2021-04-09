@@ -19,6 +19,7 @@
           <li>This is a very basic and simple general-purpose RESTful MongoDB CRUD API implemented using PyMongo and Flask.</li>
           <li>All parameters are included as json objects.</li>
           <li>No authorization necessary.</li>
+          <li>Remember to replace <code>{baseURI} with the address of where the Flask Server is hosted</code></li>
           <li>Download the Postman Collection as reference!</li>
         </p>
     </div>
@@ -214,6 +215,26 @@
               <pre>
 {
     "msg": "Delete request received. Check status by querying /get with ObjectId."
+}
+              </pre>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Refresh Data</td>
+            <td><code>/refresh_data</code></td>
+            <td>GET</td>
+            <td>Scrape data and add it to the database again.</td>
+            <td><i>None</i></td>
+            <td>
+              <code>
+                curl --location --request GET '{baseURI}/refresh_data'
+              </code>
+            </td>
+            <td>
+              <pre>
+{
+  "msg": "Data refresh started"
 }
               </pre>
             </td>

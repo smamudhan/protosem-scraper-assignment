@@ -5,6 +5,7 @@ from flask_pymongo import PyMongo
 from bson import ObjectId
 from flask import render_template
 from flask import send_file
+import os
 
 app = Flask(__name__)
 
@@ -12,6 +13,11 @@ app.config['MONGO_DBNAME'] = 'Electronics'
 app.config['MONGO_URI'] = 'mongodb+srv://ibk2510:deathbychocolate@cluster0.u4lph.mongodb.net/Electronics?retryWrites=true&w=majority'
 
 mongo = PyMongo(app)
+
+@app.route('/refresh_data', methods=['GET'])
+def invoke_scraper():
+    os.system('python scraper.py')
+    return jsonify({"msg": "Data refresh started"})
 
 @app.route('/')
 def get_home():
@@ -21,7 +27,7 @@ def get_home():
 def api_docs():
     return render_template('docs.html')
 
-@app.route('/postman_collection')
+@app.route('/postman_collection', methods=['GET'])
 def postman_download():
     return send_file('api_postman_collection.json', as_attachment=True)
 
