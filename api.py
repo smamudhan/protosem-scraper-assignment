@@ -4,6 +4,7 @@ from flask import request
 from flask_pymongo import PyMongo
 from bson import ObjectId
 from flask import render_template
+from flask import send_file
 
 app = Flask(__name__)
 
@@ -19,6 +20,10 @@ def get_home():
 @app.route('/docs')
 def api_docs():
     return render_template('docs.html')
+
+@app.route('/postman_collection')
+def postman_download():
+    return send_file('api_postman_collection.json', as_attachment=True)
 
 @app.route('/getAll', methods=['GET'])
 def get_all_data():
