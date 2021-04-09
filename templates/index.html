@@ -12,7 +12,79 @@
               <li><a href="/table">/table</a></li>
       </div>
       <div align=left style="padding: 3%;">
-        <h1>Project Introduction will go here</h1>
+        <h1>Introduction</h1>
+        <p>This project is built as part of the three hour "Programming Paradigms" assignment at ProtoSem.</p>
+        <p>The assignment's objective is to scrape data from the internet, store it in a database, build an API interface for the database using Flask and to use JavaScript to render the data retrieved from the API as a table.</p>
+        <p>Due to the time constraint, a rapid prototyping approach was adopted and the outcomes of several team members were stitched together. This resulted in some interesting problems during integration, a case where this is blatantly evident is the fact that the <code>scraper.py</code> file chooses to directly connect with the database to write data, rather than use the insert functionality that the API implements.</p>
+
+        <h1>Application Logic</h1>
+        <p>The application first scrapes data (needs to be invoked by sending a GET request [Refer: <a href="/docs">/docs</a>]) and stores it into a MongoDB database running in the cloud (Read: Atlas). Naturally, it goes without saying that we have no idea when the owner will choose to delete the instance; so this may break the entire application at any time.</p>
+        <p>The Flask API then connects to the MongoDB instance; implementing methods for CRUD (documented in <a href="/docs">/docs</a>). The interesting fact here is that the CRUD API implemented via Flask is general-purpose and will work for any application; given that the connection string is replaced (Whoo-hoo!). But it is in no way comprehensive and requires a lot of work to actually be reliable. But it was an interesting exercise to implement a general-purpose API nonetheless.</p>
+        <p>The <code>.js</code> script in <code>/templates/table.html</code> then connects to the Flask API and using the <code>/getAll</code> method; gets all the data and renders it in an elegant table format; styled by the BootStrap lords.</p>
+
+        <h1>Technologies Used</h1>
+        <p>
+          <ul>
+            <li>MongoDB</li>
+            <li>Flask</li>
+            <li>Python</li>
+            <li>JavaScript/HTML/CSS</li>
+          </ul>
+        </p>
+
+        <h1>Individual Contributions</h1>
+        <table class="table table-bordered">
+          <tr class="thead-light">
+            <td>Name</td>
+            <td>Area of work</td>
+          </tr>
+
+          <!-- Add one <tr> element per area of work here -->
+          <!-- Start <tr> element -->
+          <tr>
+            <td>
+              <ul>
+                <li>Adithya Ganesan</li>
+                <li>Amudhan Manivasagam</li>
+              </ul>
+            </td>
+            <td>
+              Flask API, integration of all the contributed code and all documentation.
+            </td>
+          </tr>
+          <!-- End <tr> element -->
+          <!-- Start <tr> element -->
+          <tr>
+            <td>
+              <ul>
+                <li>Ibrahim Kalil</li>
+                <li>Swetha Mohan</li>
+                <li>Pranesh Suresh</li>
+              </ul>
+            </td>
+            <td>
+              <b>ETL:</b> Scraping the data, processing and writing to DB
+            </td>
+          </tr>
+          <!-- End <tr> element -->
+          <!-- Start <tr> element -->
+          <tr>
+            <td>
+              <ul>
+                <li>Kamali Suthakaran</li>
+                <li>Swarnalatha</li>
+                <li>Narmadha</li>
+                <li>Rohini</li>
+                <li>Lashya</li>
+              </ul>
+            </td>
+            <td>
+              <b>Visualization:</b> Getting the data from the Flask API and rendering it as a table using vanilla JavaScript
+            </td>
+          </tr>
+          <!-- End <tr> element -->
+
+        </table>
     </div>
   </body>
 </html>
